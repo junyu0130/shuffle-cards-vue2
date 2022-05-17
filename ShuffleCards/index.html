@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CardShuffle</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div id="app">
+      <div class="control">
+        <input type="checkbox" v-model="gather" />
+        <input
+          type="checkbox"
+          v-model="card.open"
+          v-for="(card,cid) in cards"
+        />
+        <button @click="shuffle">shuffle</button>
+        <!-- <button @click="startGame">startGame</button> -->
+      </div>
+      <!-- <h2>{{ state }}</h2> -->
+      <div class="cards" :class="{gather: gather}">
+        <div
+          class="card"
+          v-for="card in cards"
+          :data-order="card.id"
+          :class="{open: card.open}"
+        >
+          <div class="face back"></div>
+          <div class="face front">{{ getSymbol(card.label) }}</div>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

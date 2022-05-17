@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Card Shuffle Game</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="control">
+        <input type="checkbox" v-model="gather" />
+        <input type="checkbox" v-model="card.open" v-for="card in cards" />
+        <button @click="shuffle">shuffle</button>
+      </div>
+      <h2>Card Shuffle Game</h2>
+      <div class="cards" :class="{gather: gather}">
+        <div
+          class="card"
+          v-for="card in cards"
+          :data-order="card.id"
+          :class="{open: card.open}"
+        >
+          <div class="face back"></div>
+          <div class="face front">{{ getSymbol(card.label) }}</div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"
+      integrity="sha512-QJsj3afWlCpnQ60XzzYE8Jb3IgHIK1BcGZox9rUSmRRq3Ocz9vQ1yR80eX2/b9jfx/UuT5zYWNdrM8Te/eCMhQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
