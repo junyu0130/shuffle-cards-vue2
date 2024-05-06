@@ -99,7 +99,13 @@ var vm = new Vue({
           }, 1000);
         }
         setTimeout(() => {
-          this.startGame();
+          this.mode = "";
+          this.question = null;
+          this.turnAll(false);
+          this.gather = true;
+          this.state = "Press the cards to start a game!";
+          let i = 1;
+          this.cards.forEach((card) => (card.id = i++));
         }, 3000);
       } else {
         this.startGame();

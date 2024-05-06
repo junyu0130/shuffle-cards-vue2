@@ -9,22 +9,23 @@
     <!-- partial:index.partial.html -->
     <div id="app">
       <div class="control">
-        <input type="checkbox" v-model="gather" />
+        <input type="checkbox" v-model="gather" aria-label="Gather cards" />
         <input
           type="checkbox"
           v-model="card.open"
           v-for="(card,cid) in cards"
         />
         <button @click="shuffle">shuffle</button>
-        <!-- <button @click="startGame">startGame</button> -->
+        <button @click="startGame">startGame</button>
       </div>
-      <!-- <h2>{{ state }}</h2> -->
+      <h2>{{ state }}</h2>
       <div class="cards" :class="{gather: gather}">
         <div
           class="card"
           v-for="card in cards"
           :data-order="card.id"
           :class="{open: card.open}"
+          @click="openCard(card)"
         >
           <div class="face back"></div>
           <div class="face front">{{ getSymbol(card.label) }}</div>
